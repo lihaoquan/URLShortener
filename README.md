@@ -57,7 +57,7 @@ While MySQL is up and running with the required tables, at the root of the proje
 ### .env Config (Backend)
 The .env configuration file contains the following:
 1) ```SERVER_PORT``` port number to run API backend server.
-2) ```DEV_PREFIX``` prefix for shortened URL on testing environment.
+2) ```DEV_PREFIX``` prefix for shortened URL on testing environment, default is "http://localhost:3001".
 3) ```PROD_PREFIX``` prefix for shortened URL on production environment, default is empty.
 4) ```RUNTIME_ENV``` either set to "TEST" or "PROD" for test/production environment.
 5) ```DB_HOST``` host for the MySQL database server, default is "localhost".

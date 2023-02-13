@@ -113,8 +113,7 @@ router.get('/:link', async ctx => {
                         return
                     }
                 }
-                ctx.response.status = httpCodes['OK']
-                ctx.body = { data: result[0].source_url }
+                ctx.redirect(result[0].source_url)
             } else { //Short link not found.
                 ctx.response.status = httpCodes['Not Found']
                 ctx.body = { msg: 'URL Requested Does Not Exist.' }

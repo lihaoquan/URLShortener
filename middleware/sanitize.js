@@ -1,8 +1,7 @@
 // Input validation/sanitization
 const validator = require('validator')
 
-const dotenv = require('dotenv')
-const myEnv = dotenv.config()
+require('dotenv').config()
 
 // Checks if object is a string
 let isString = (str) => {

@@ -4,8 +4,7 @@ const cors = require('@koa/cors')
 
 const bodyParser = require('koa-bodyparser')
 
-const dotenv = require('dotenv')
-const myEnv = dotenv.config()
+require('dotenv').config()
 
 const UserRoutes = require('./routes/user.router')
 

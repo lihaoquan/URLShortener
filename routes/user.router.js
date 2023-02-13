@@ -2,9 +2,7 @@ const Router = require('koa-router')
 const router = new Router()
 
 // Environment Configs
-const dotenv = require('dotenv')
-
-const myEnv = dotenv.config()
+require('dotenv').config()
 
 // Rate Limiting
 const limiter = require('./limiter')

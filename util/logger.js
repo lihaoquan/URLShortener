@@ -1,7 +1,5 @@
 const winston = require('winston')
-const dotenv = require('dotenv')
-
-const myEnv = dotenv.config()
+require('dotenv').config()
 
 const logger = winston.createLogger({
     level: 'info',

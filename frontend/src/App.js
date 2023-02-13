@@ -11,6 +11,8 @@ function App() {
     expires_on: null
   })
 
+  console.log(process.env.REACT_APP_HELLO)
+
   const [shortURL, setShortURL] = useState(null)
   const [hasError, setHasError] = useState(false)
   const [errorMessage, setErrorMessage] = useState("")

@@ -17,6 +17,15 @@ function App() {
   const [showFeedback, setShowFeedback] = useState(false)
   const [disableButton, setButtonDisabled] = useState(false)
 
+  let tryCopy = () => {
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(shortURL)
+      alert("Copied to clipboard.")
+    } else {
+      alert("Unfortunately, this does not work without https protocol (it works on local). Please copy the link manually: " + shortURL)
+    }
+  }
+
   const handleSubmit = (e) => {
 
     e.preventDefault()
@@ -69,7 +78,7 @@ function App() {
             {
               shortURL != null && !hasError &&
               <div className="success">
-                <p>Done! Your URL is <span className="copy" onClick={() => { navigator.clipboard.writeText(shortURL); alert("Copied to clipboard.") }}>{shortURL}</span> <i>(click to copy!)</i></p>
+                <p>Done! Your URL is <span className="copy" onClick={() => { tryCopy() }}>{shortURL}</span> <i>(click to copy!)</i></p>
               </div>
             }
             {

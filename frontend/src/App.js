@@ -35,7 +35,7 @@ function App() {
 
       setButtonDisabled(true)
 
-      axios.post('http://localhost:3001/generate', form)
+      axios.post(process.env.REACT_APP_RUNTIME_ENV == "PROD" ? process.env.REACT_APP_API_ENDPOINT_PROD : process.env.REACT_APP_API_ENDPOINT_DEV + 'generate', form)
         .then(function (response) {
           if (response.status == 200) {
             setShortURL(response.data.data)

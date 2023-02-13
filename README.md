@@ -41,7 +41,7 @@ While MySQL is up and running with the required tables, at the root of the proje
 The .env configuration file contains the following:
 1) ```SERVER_PORT``` port number to run API backend server.
 2) ```DEV_PREFIX``` prefix for shortened URL on testing environment.
-3) ```PROD_PREFIX``` prefix for shortened URL on production environment.
+3) ```PROD_PREFIX``` prefix for shortened URL on production environment, default is empty.
 4) ```RUNTIME_ENV``` either set to "TEST" or "PROD" for test/production environment.
 5) ```DB_HOST``` host for the MySQL database server, default is "localhost".
 6) ```DB_USER``` username for MySQL database, default is "root".
@@ -49,6 +49,12 @@ The .env configuration file contains the following:
 8) ```DB_NAME``` database name, default is "urlshortener".
 9) ```BASE_64``` the set of characters to be used when encoding shortened URL.
 10) ```SHORT_LINK_LENGTH``` length of the shortened link, default is "7".
+
+### .env Config (Frontend)
+The .env configuration file contains the following:
+1) ```REACT_APP_RUNTIME_ENV``` either set to "TEST" or "PROD" for test/production environment.
+2) ```REACT_APP_API_ENDPOINT_DEV``` endpoint URL of the backend in "TEST" (development) environment, default is "http://localhost:3001".
+3) ```REACT_APP_API_ENDPOINT_PROD``` endpoint URL of the backend in "PROD" (production) environment, default is empty.
 
 <a name="design"/>
 

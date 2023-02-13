@@ -34,7 +34,7 @@ The following installation process assumes that MySQL has already been installed
 While MySQL is up and running with the required tables, at the root of the project directory, run ```npm test```.
 1) The test will check if the database table has been set up correctly to not allow duplicate short links to be inserted.
 
-## .env Config
+### .env Config
 The .env configuration file contains the following:
 1) ```SERVER_PORT``` port number to run API backend server.
 2) ```DEV_PREFIX``` prefix for shortened URL on testing environment.

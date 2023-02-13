@@ -51,7 +51,7 @@ router.post('/generate', limiter.generateLink, async ctx => {
     }
     
     // Insert into database.
-    await db.query('INSERT INTO `links` (`short_url`, `source_url`, `expires_on`) VALUES (?, ?, ?)', [base64_encoding, url, expires_on])
+    await db.query('INSERT INTO `links` (`short_url`, `source_url`, `expires_on`) VALUES (?, ?, ?);', [base64_encoding, url, expires_on])
     .then(() => {
         ctx.response.status = httpCodes['OK']
         ctx.body = { data: base64_encoding }
@@ -71,6 +71,32 @@ router.post('/generate', limiter.generateLink, async ctx => {
 // Convert short url back to original url.
 router.get('/:link', async ctx => {
 
+    // Escape link to prevent malicious input.
+    const validator = require('validator')
+    let link = validator.escape(ctx.params.link)
+    
+    // Validate contents.
+    if (!link) {
+        ctx.response.status = httpCodes["Bad Request"]
+        ctx.body = { msg: 'Bad Request' }
+        return
+    }
+
+    // Search for original url.
+    await db.query('SELECT `source_url` FROM `links` WHERE `short_url` = ?;', [link])
+    .then((result) => {
+        if (result.length > 0) {
+            ctx.response.status = httpCodes['OK']
+            ctx.body = { data: result[0].source_url }
+        } else { //Short link not found.
+            ctx.response.status = httpCodes["Not Found"]
+            ctx.body = { msg: 'URL Requested Does Not Exist.' }
+        }
+    },
+    (err) => {
+        ctx.response.status = httpCodes['Internal Server Error']
+        ctx.body = { msg: 'Internal Server Error.' }
+    })
 })
 
 

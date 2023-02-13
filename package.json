@@ -1,0 +1,25 @@
+{
+  "name": "urlshortener",
+  "version": "1.0.0",
+  "description": "GovTech Internship Technical Test",
+  "main": "index.js",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "koa": "^2.14.1",
+    "koa-bodyparser": "^4.3.0",
+    "koa-router": "^12.0.0",
+    "koa-helmet": "^6.1.0",
+    "koa2-ratelimit": "^1.1.2",
+    "mysql2": "^3.1.2",
+    "validator": "^13.9.0",
+    "winston": "^3.8.2"
+  },
+  "devDependencies": {
+    "jest": "^29.4.2"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Li Haoquan",
+  "license": "ISC"
+}

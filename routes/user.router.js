@@ -103,9 +103,8 @@ router.get('/:link', async ctx => {
                     let current_date = new Date()
                     let expiry_date = new Date(expires_on)
 
-                    // Hardcode GMT+8
+                    // Hardcode GMT+8 for JavaScript environment date.
                     current_date = new Date(current_date.getTime() + (8 * 60 * 60 * 1000))
-                    expiry_date = new Date(expiry_date.getTime() + (8 * 60 * 60 * 1000))
 
                     if (current_date > expiry_date) {
                         ctx.response.status = httpCodes['Not Found']

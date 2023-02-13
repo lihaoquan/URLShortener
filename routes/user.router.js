@@ -102,7 +102,7 @@ router.get('/:link', async ctx => {
     }
 
     // Search for original url.
-    await db.query('SELECT `source_url`, `expires_on` FROM `links` WHERE `short_url` = ?;', [link])
+    await db.query('SELECT `short_url`, `source_url`, `expires_on`, `hit_count` FROM `links` WHERE `short_url` = ?;', [link])
         .then((result) => {
             if (result.length > 0) {
                 let expires_on = result[0].expires_on
@@ -123,6 +123,8 @@ router.get('/:link', async ctx => {
                     }
                 }
                 ctx.redirect(result[0].source_url)
+                // Update hit count.
+                db.query('UPDATE `links` SET `hit_count` = ? WHERE `links`.`short_url` = ?;', [result[0].hit_count + 1, link])
             } else { //Short link not found.
                 ctx.response.status = httpCodes['Not Found']
                 ctx.body = { msg: 'URL Requested Does Not Exist.' }

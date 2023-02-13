@@ -16,7 +16,7 @@ app.use(helmet())
 
 // Enable cross origin access from front end
 app.use(cors({
-    origins: ['*']   
+    origins: ['*']
 }))
 
 // Parse http request body

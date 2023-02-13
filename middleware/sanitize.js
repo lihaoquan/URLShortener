@@ -29,7 +29,7 @@ let sanitize = async (ctx, next) => {
                 let field = getRequest(ctx).body[key]
 
                 if (Array.isArray(field)) {
-                    getRequest(ctx).body[key] = field.map(x => 
+                    getRequest(ctx).body[key] = field.map(x =>
                         isString(x) ? validator.escape(x) : x
                     )
                 } else if (isString(field)) {

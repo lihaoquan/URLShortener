@@ -2,9 +2,9 @@
 
 [Setup Instructions](#setup)
 
-[Design Goals](#security)
+[Design Goals](#design)
 
-[Security Goals](#design)
+[Security Goals](#security)
 
 [Design/Scalability](#scalable)
 

@@ -1,5 +1,7 @@
 ### Table of Contents  
 
+[Architecture](#architecture)
+
 [Setup Instructions](#setup)
 
 [Design Goals](#design)
@@ -11,10 +13,25 @@
 [Algorithm](#algo)
 
 -----
+<a name="architecture"/>
+
+## Architecture
+1) Front End: ReactJS
+2) Back End: KoaJS API Server
+3) Database: MySQL Database
+
+-----
 <a name="setup"/>
 
 ## Setup Instructions
 The following installation process assumes that NodeJS has already been installed in the local environment.
+
+### Timezone
+One of the features of the URL Shorterner is the ability to set an expiry date for generated short links.
+Once the links expire, they will no longer redirect user to the original link.
+For this, a datetime comparison is done. The timezone setting for database and Node.JS is as follows:
+1) MySQL table: UTC/GMT+8
+2) Node.JS environment: UTC/GMT+0
 
 ### Backend & Frontend
 1) Download and unzip the project at a local directory.

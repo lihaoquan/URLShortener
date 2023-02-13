@@ -21,7 +21,15 @@ function App() {
 
     e.preventDefault()
 
-    console.log(validator.isURL(form.url))
+    // Check that expiry date is not before current time.
+    if (form.expires_on != null) {
+      if (new Date() > new Date(form.expires_on)) {
+        setHasError(true)
+        setShowFeedback(true)
+        setErrorMessage("Expiry date has already lapsed!")
+        return
+      }
+    }
 
     if (validator.isURL(form.url)) {
 

@@ -50,6 +50,15 @@ router.post('/generate', limiter.generateLink, async ctx => {
         return
     }
 
+    // Check that expiry date has not already lapsed.
+    if (expires_on != null) {
+        if (new Date() > new Date(expires_on)) {
+            ctx.response.status = httpCodes['Bad Request']
+            ctx.body = { msg: 'Bad Request' }
+            return
+        }
+    }
+
     // Base62 encoding with a-z A-Z 0-9 characters.
     let base64_string = process.env.BASE_64
     let random_counter = Math.floor(Date.now() + Math.random())

@@ -30,6 +30,10 @@ The following installation process assumes that MySQL has already been installed
 1) Create database and import ```links.sql``` which contains the table needed for the application.
 2) Change .env config for ```DB_HOST```, ```DB_USER```, ```DB_PASSWORD```, ```DB_NAME``` accordingly.
 
+### Tests
+While MySQL is up and running with the required tables, at the root of the project directory, run ```npm test```.
+1) The test will check if the database table has been set up correctly to not allow duplicate short links to be inserted.
+
 ## .env Config
 The .env configuration file contains the following:
 1) ```SERVER_PORT``` port number to run API backend server.

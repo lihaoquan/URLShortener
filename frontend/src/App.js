@@ -6,12 +6,12 @@ import './App.css'
 
 function App() {
 
+  const URL_PREFIX = process.env.REACT_APP_ENVIRONMENT == "PROD" ? process.env.REACT_APP_DEPLOY_PREFIX : process.env.REACT_APP_DEV_PREFIX
+
   const [form, setForm] = useState({
     url: '',
     expires_on: null
   })
-
-  console.log(process.env.REACT_APP_HELLO)
 
   const [shortURL, setShortURL] = useState(null)
   const [hasError, setHasError] = useState(false)
@@ -63,7 +63,7 @@ function App() {
             {
               shortURL != null && !hasError &&
               <div className="success">
-                <p>Done! Your URL is <span className="copy" onClick={() => { navigator.clipboard.writeText("http://" + shortURL); alert("Copied to clipboard.") }}>http://{shortURL}</span> <i>(click to copy!)</i></p>
+                <p>Done! Your URL is <span className="copy" onClick={() => { navigator.clipboard.writeText(URL_PREFIX + shortURL); alert("Copied to clipboard.") }}>{URL_PREFIX + shortURL}</span> <i>(click to copy!)</i></p>
               </div>
             }
             {

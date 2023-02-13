@@ -1,38 +1,169 @@
-.App {
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap');
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Ubuntu', sans-serif;
+  line-height: 1.5;
+  font-size: 16px;
+  background-image: url(../public/webb.png);
+}
+
+h1, h2, h3, h4, h5 {
+  font-weight: bold;
+  color: #282B28;
+}
+
+h1 {
+  font-size: 37.90px;
+}
+
+h2 {
+  font-size: 28.43px;
+}
+
+h3 {
+  font-size: 21.33px;
+}
+
+header {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App {
+  padding: 2em;
+  width: 500px;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  border-radius: 4px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.App i {
+  color: #747774;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.App form {
+  background-color: #f8f8fe;
+  padding: 2em 3em 2em 3em;
+  margin: 1em;
+  border-radius: 4px;
+}
+
+.App form label {
+  color: #757e8b;
+  font-weight: bold;
+  flex-grow: 1;
+  line-height: 3.5;
+  text-align: right;
+}
+
+.App form button, .App form input {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 16px;
+  outline: none;
+  border: none;
+}
+
+.App form input {
+  padding: 1em;
+  border-radius: 4px;
+  border: 2px solid transparent;
+  margin-left: 1em;
+}
+
+.App form input:focus {
+  border: 2px solid #ddd;
+}
+
+.App form button {
+  margin-top: .5em;
+  border-radius: 4px;
+  padding: 1em 1.5em;
+  cursor: pointer;
+  border: 2px solid #1B98E0;
+  background-color: #1B98E0;
+  width: 100%;
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.App form button:hover {
+  background-color: #12a7fd;
+}
+
+.App a, .App a:link, .App a:active, .App a:visited, .App a:hover {
+  color: #1B98E0;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.App .form-group {
+  margin-bottom: 1em;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.App .form-group input {
+  width: 70%;
 }

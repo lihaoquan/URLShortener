@@ -6,12 +6,12 @@ const myEnv = dotenv.config()
 
 // Checks if object is a string
 let isString = (str) => {
-    return Object.prototype.toString.call(str) === "[object String]"
+    return Object.prototype.toString.call(str) === '[object String]'
 }
 
 // For live server/POSTMAN API testing
 const getRequest = ctx => {
-    if (process.env.RUNTIME_ENV == "PROD") {
+    if (process.env.RUNTIME_ENV == 'PROD') {
         return ctx.req
     } else {
         return ctx.request

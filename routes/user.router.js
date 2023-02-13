@@ -12,12 +12,15 @@ const limiter = require('./limiter')
 // Database
 const db = require('../db/db.js')
 
+// Input sanitization
+const validator = require('validator')
+
 // HTTP response codes
 const httpCodes = require('../httpCodes.json')
 
 // For live server/POSTMAN API testing
 const getRequest = ctx => {
-    if (process.env.RUNTIME_ENV == "PROD") {
+    if (process.env.RUNTIME_ENV == 'PROD') {
         return ctx.req
     } else {
         return ctx.request
@@ -29,12 +32,22 @@ router.post('/generate', limiter.generateLink, async ctx => {
     
     // Get POST request body.
     const post = getRequest(ctx).body
-    const url = post.url
-    const expires_on = post.expires_on === undefined ? null : post.expires_on
+    let url = post.url
+    let expires_on = post.expires_on === undefined ? null : post.expires_on
 
     // Validate contents.
     if (!url) {
-        ctx.response.status = httpCodes["Bad Request"]
+        ctx.response.status = httpCodes['Bad Request']
+        ctx.body = { msg: 'Bad Request' }
+        return
+    }
+
+    // Replace escaped '//' to verify that it is a URL.
+    url = url.replace(new RegExp('&#x2F;', 'g'), '/')
+
+    // Validate if user input is a valid URL.
+    if (!validator.isURL(url)) {
+        ctx.response.status = httpCodes['Bad Request']
         ctx.body = { msg: 'Bad Request' }
         return
     }
@@ -72,12 +85,11 @@ router.post('/generate', limiter.generateLink, async ctx => {
 router.get('/:link', async ctx => {
 
     // Escape link to prevent malicious input.
-    const validator = require('validator')
     let link = validator.escape(ctx.params.link)
     
     // Validate contents.
     if (!link) {
-        ctx.response.status = httpCodes["Bad Request"]
+        ctx.response.status = httpCodes['Bad Request']
         ctx.body = { msg: 'Bad Request' }
         return
     }
@@ -89,7 +101,7 @@ router.get('/:link', async ctx => {
             ctx.response.status = httpCodes['OK']
             ctx.body = { data: result[0].source_url }
         } else { //Short link not found.
-            ctx.response.status = httpCodes["Not Found"]
+            ctx.response.status = httpCodes['Not Found']
             ctx.body = { msg: 'URL Requested Does Not Exist.' }
         }
     },

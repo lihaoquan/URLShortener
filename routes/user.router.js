@@ -65,7 +65,7 @@ router.post('/generate', limiter.generateLink, async ctx => {
     await db.query('INSERT INTO `links` (`short_url`, `source_url`, `expires_on`) VALUES (?, ?, ?);', [base64_encoding, url, expires_on])
         .then(() => {
             ctx.response.status = httpCodes['OK']
-            ctx.body = { data: base64_encoding }
+            ctx.body = { data: process.env.RUNTIME_ENV == "PROD" ? process.env.PROD_PREFIX : process.env.DEV_PREFIX + base64_encoding }
         },
             (err) => {
                 // Duplicate short link generated (unlikely)

@@ -26,7 +26,46 @@ const getRequest = ctx => {
 
 // Generate short url link.
 router.post('/generate', limiter.generateLink, async ctx => {
+    
+    // Get POST request body.
+    const post = getRequest(ctx).body
+    const url = post.url
+    const expires_on = post.expires_on === undefined ? null : post.expires_on
 
+    // Validate contents.
+    if (!url) {
+        ctx.response.status = httpCodes["Bad Request"]
+        ctx.body = { msg: 'Bad Request' }
+        return
+    }
+
+    // Base62 encoding with a-z A-Z 0-9 characters.
+    let base64_string = process.env.BASE_64
+    let random_counter = Math.floor(Date.now() + Math.random())
+    let base64_encoding = ''
+
+    // Get a shortlink of specified length.
+    while (base64_encoding.length < process.env.SHORT_LINK_LENGTH) {
+        base64_encoding += base64_string[random_counter % 62]
+        random_counter = Math.floor(random_counter / 62)
+    }
+    
+    // Insert into database.
+    await db.query('INSERT INTO `links` (`short_url`, `source_url`, `expires_on`) VALUES (?, ?, ?)', [base64_encoding, url, expires_on])
+    .then(() => {
+        ctx.response.status = httpCodes['OK']
+        ctx.body = { data: base64_encoding }
+    }, 
+    (err) => {
+        // Duplicate short link generated (unlikely)
+        if (err.errno == 1062) {
+            ctx.response.status = httpCodes['Internal Server Error']
+            ctx.body = { msg: 'Please try again later.' }
+        } else {
+            ctx.response.status = httpCodes['Internal Server Error']
+            ctx.body = { msg: 'Internal Server Error.' }
+        }
+    })
 })
 
 // Convert short url back to original url.

@@ -1,5 +1,7 @@
 ### Table of Contents  
 
+[Architecture](#architecture)
+
 [Setup Instructions](#setup)
 
 [Design Goals](#design)
@@ -9,6 +11,13 @@
 [Design/Scalability](#scalable)
 
 [Algorithm](#algo)
+
+-----
+<a name="architecture"/>
+## Architecture
+1) Front End: ReactJS
+2) Back End: KoaJS API Server
+3) Database: MySQL Database
 
 -----
 <a name="setup"/>

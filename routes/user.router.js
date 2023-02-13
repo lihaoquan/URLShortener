@@ -16,20 +16,11 @@ const validator = require('validator')
 // HTTP response codes
 const httpCodes = require('../httpCodes.json')
 
-// For live server/POSTMAN API testing
-const getRequest = ctx => {
-    if (process.env.RUNTIME_ENV == 'PROD') {
-        return ctx.req
-    } else {
-        return ctx.request
-    }
-}
-
 // Generate short url link.
 router.post('/generate', limiter.generateLink, async ctx => {
 
     // Get POST request body.
-    const post = getRequest(ctx).body
+    const post = ctx.request.body
     let url = post.url
     let expires_on = post.expires_on === undefined ? null : post.expires_on
 

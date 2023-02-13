@@ -14,9 +14,9 @@ function App() {
 
     e.preventDefault()
 
-    axios.post('http://localhost:3000/generate', form)
+    axios.post('http://localhost:3001/generate', form)
       .then(function (response) {
-        
+        console.log(response)
       }).catch(function (error) {
 
       })
@@ -31,7 +31,7 @@ function App() {
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label>URL</label>
-            <input type="url" placeholder="Enter URL" required onChange={(e) => { setForm({ ...form, url: e.target.value }) }} />
+            <input type="url" placeholder="Enter URL" required value={form.url} onChange={(e) => { setForm({ ...form, url: e.target.value }) }} />
           </div>
           <div className="form-group">
             <label>Expiry</label>

@@ -10,7 +10,7 @@
 
 [Algorithm](#algo)
 
-
+-----
 <a name="setup"/>
 
 ## Setup Instructions
@@ -56,12 +56,14 @@ The .env configuration file contains the following:
 2) ```REACT_APP_API_ENDPOINT_DEV``` endpoint URL of the backend in "TEST" (development) environment, default is "http://localhost:3001".
 3) ```REACT_APP_API_ENDPOINT_PROD``` endpoint URL of the backend in "PROD" (production) environment, default is empty.
 
+-----
 <a name="design"/>
 
 ## Design Goals
 1) Users can generate shortened URL using their original URL
 2) The shortened URL will redirect users to the original URL
 
+-----
 <a name="security"/>
 
 ## Security Goals
@@ -72,6 +74,7 @@ The .env configuration file contains the following:
 5) Do not allow other URLs to replace expired URLs for security purpose (prevented by point 4 and UNIQUE requirement in Database schema design)
 6) Sanitize original URL to prevent XSS injection
 
+-----
 <a name="scalable"/>
 
 ## Design/Scalability
@@ -80,6 +83,7 @@ The .env configuration file contains the following:
 2) Suppose we choose n = 7, then the number of possible URLs we can have is 62^7 = 3521614606208
 3) If needed, it can be expanded to n = 8, n = 9, etc
 
+-----
 <a name="algo"/>
 
 ## Algorithm

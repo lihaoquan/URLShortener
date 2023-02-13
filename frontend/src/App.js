@@ -96,7 +96,7 @@ function App() {
           </div>
           <div className="form-group">
             <label>Expiry</label>
-            <input type="datetime-local" onChange={(e) => { setForm({ ...form, expires_on: e.target.value }) }} />
+            <input type="datetime-local" value={form.expires_on ? form.expires_on : ''} onChange={(e) => { setForm({ ...form, expires_on: e.target.value }) }} />
           </div>
           <button disabled={disableButton}>Generate</button>
         </form>

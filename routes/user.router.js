@@ -6,6 +6,12 @@ const dotenv = require('dotenv')
 
 const myEnv = dotenv.config()
 
+// Rate Limiting
+const limiter = require('./limiter')
+
+// Database
+const db = require('../db/db.js')
+
 // HTTP response codes
 const httpCodes = require('../httpCodes.json')
 

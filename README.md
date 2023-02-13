@@ -1,4 +1,4 @@
-The live version of this project can be found at http://tini.pro/
+The live version of this project can be found at http://tini.pro:3000/
 
 ### Table of Contents  
 

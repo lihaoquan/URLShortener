@@ -167,3 +167,36 @@ header {
 .App .form-group input {
   width: 70%;
 }
+
+.App .feedback {
+  padding: 1em;
+  font-weight: bold;
+  margin: .5em 1em;
+  border: 2px solid #f8f8fe;
+  border-radius: 4px;
+}
+
+.App .feedback .success {
+  color: #1B998B;
+}
+
+.App .feedback .error {
+  color: #D7263D;
+}
+
+.App .feedback .copy {
+  font-weight: normal;
+  color: #282B28;
+  background-color: #f8f8fe;
+  padding: .5em;
+  margin-left: .5em;
+  cursor: pointer;
+}
+
+.App button:disabled,
+.App button[disabled],
+.App button:disabled:hover,
+.App button[disabled]:hover {
+  background-color: #116ea3;
+  color: #ddd;
+}

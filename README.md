@@ -14,6 +14,7 @@
 
 -----
 <a name="architecture"/>
+
 ## Architecture
 1) Front End: ReactJS
 2) Back End: KoaJS API Server

@@ -13,13 +13,13 @@ const app = new Koa()
 // General security middleware functions
 app.use(helmet())
 
-// Sanitize user input
-app.use(require('./middleware/sanitize'))
-
 // Parse http request body
 app.use(bodyParser({
     jsonLimit: '10mb'
 }))
+
+// Sanitize user input
+app.use(require('./middleware/sanitize'))
 
 // Routes
 app.use(UserRoutes.routes())

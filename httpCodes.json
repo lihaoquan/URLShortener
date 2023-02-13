@@ -1,0 +1,10 @@
+{
+    "OK": 200,
+    "Bad Request": 400,
+    "Unauthorized": 401,
+    "Forbidden": 403,
+    "Not Found": 404,
+    "Method Not Allowed": 405,
+    "Token expired/invalid": 498,
+    "Internal Server Error": 500
+}
